@@ -3,6 +3,6 @@ import App from './App.vue'
 
 const createMyApp = () => createApp(App)
 
-document.querySelectorAll('#app').forEach((app) => {
+document.querySelectorAll('[data-calc]').forEach((app) => {
   createMyApp().mount(app)
 })
