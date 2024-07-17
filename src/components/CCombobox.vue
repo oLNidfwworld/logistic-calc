@@ -9,7 +9,7 @@ defineOptions({
 
 const props = defineProps<{
     items: Array<{
-        name: string
+        NAME: string
     }>,
     modelValue: String,
     displayTrigger?: Boolean
@@ -49,9 +49,9 @@ const slots = defineSlots<{
                     Нет вариантов
                 </ComboboxEmpty>
                 <ComboboxGroup class="cu-combo__group">
-                    <ComboboxItem v-for="(item, index) in items" :key="index" class="cu-combo__item" :value="item.name">
+                    <ComboboxItem v-for="(item, index) in items" :key="index" class="cu-combo__item" :value="item.NAME">
                         <span>
-                            {{ item.name }}
+                            {{ item.NAME }}
                         </span>
                         <ComboboxItemIndicator class="cu-combo__indicator">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -72,6 +72,11 @@ const slots = defineSlots<{
     </ComboboxRoot>
 </template>
 <style>
+.cu-combo__viewport {
+    MAX-HEIGHT: 300px;
+    overflow-y: scroll;
+}
+
 .cu-combo {
     position: relative;
     width: 100%;

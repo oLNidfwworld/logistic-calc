@@ -7,27 +7,27 @@ import { ref, shallowReactive, reactive, watch } from 'vue';
 
 const comboItems = shallowReactive([
   {
-    name: '20 футов'
+    NAME: '20 футов'
   },
   {
-    name: '40 футов'
+    NAME: '40 футов'
   }
 ]);
 
-const terminals = shallowReactive([
+const terminals = shallowReactive((window.containerPrices) ? window.containerPrices : [
   {
-    name: 'Терминал 1',
-    distance: 6,
+    NAME: 'Терминал 1',
+    DISTANCE_VALUE: 6,
   },
   {
-    name: 'Терминал 2',
-    distance: 12
+    NAME: 'Терминал 2',
+    DISTANCE_VALUE: 12
   },
   {
-    name: 'Терминал 3',
-    distance: 40
+    NAME: 'Терминал 3',
+    DISTANCE_VALUE: 40
   }
-])
+]);
 
 const data = reactive({
   containerType: '',
@@ -37,16 +37,17 @@ const data = reactive({
   date: ''
 })
 const submit = () => {
-  console.log(data.distance);
-  const moveFromDistance = terminals.find(terminal => terminal.name === data.moveFrom)?.distance;
-  const moveToDistance = terminals.find(terminal => terminal.name === data.moveTo)?.distance;
+  const moveFromDistance = parseFloat(terminals.find(terminal => terminal.NAME === data.moveFrom)?.DISTANCE_VALUE);
+  const moveToDistance = parseFloat(terminals.find(terminal => terminal.NAME === data.moveTo)?.DISTANCE_VALUE);
   if (moveFromDistance && moveToDistance) {
-    const calcResult = (moveFromDistance + moveToDistance + data.distance) * 100 + 20000;
+    const calcResult = (moveFromDistance + moveToDistance + (data.distance || 0)) * 100 + 20000;
     if ((typeof window.emulateFinalAction) === 'function') {
       window.emulateFinalAction({
         ...data,
         calcResult
       })
+    } else {
+      console.log(calcResult);
     }
   }
 }
@@ -140,7 +141,7 @@ const submit = () => {
   padding: 30px;
 }
 
-.cu-custom.cu-form .cu-title {
+.cu-custom .cu-form .cu-title {
   color: var(--white);
 }
 
