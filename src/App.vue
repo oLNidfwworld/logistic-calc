@@ -135,22 +135,22 @@ const submit = () => {
   </div>
 </template>
 <style lang="css">
-.cu-form {
+.cu-custom .cu-form {
   background-color: var(--blue);
   padding: 30px;
 }
 
-.cu-form .cu-title {
+.cu-custom.cu-form .cu-title {
   color: var(--white);
 }
 
-.cu-form__grid {
+.cu-custom .cu-form__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 25px;
 }
 
-.cu-inpt {
+.cu-custom .cu-inpt {
   width: 100%;
   font-size: 16px;
   border-radius: 4px;
@@ -159,7 +159,7 @@ const submit = () => {
   font-weight: 600;
 }
 
-.cu-inpt-group__label {
+.cu-custom .cu-inpt-group__label {
   display: block;
   font-weight: 600;
   color: var(--turquoise);
@@ -167,7 +167,7 @@ const submit = () => {
 }
 
 
-.cu-btn {
+.cu-custom .cu-btn {
   padding: 12px 15px;
   background-color: var(--light-blue);
   color: var(--white);
@@ -177,7 +177,7 @@ const submit = () => {
   height: fit-content;
 }
 
-.cu-form__approve {
+.cu-custom .cu-form__approve {
   margin-top: 25px;
   display: flex;
   flex-direction: column;
@@ -185,7 +185,7 @@ const submit = () => {
 }
 
 
-.cu-form__desc {
+.cu-custom .cu-form__desc {
   display: flex;
   font-weight: semibold;
   align-items: flex-start;
@@ -193,27 +193,27 @@ const submit = () => {
   color: var(--turquoise);
 }
 
-.cu-form__desc>*:first-child {
+.cu-custom .cu-custom .cu-form__desc>*:first-child {
   flex-shrink: 0;
 }
 
 @media (min-width: 480px) {
-  .cu-form__approve {
+  .cu-custom .cu-form__approve {
     flex-direction: row;
     align-items: center;
   }
 }
 
 @media (min-width: 1024px) {
-  .cu-form__grid {
+  .cu-custom .cu-form__grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .cu-form__approve {
+  .cu-custom .cu-form__approve {
     flex-direction: row;
   }
 
-  .cu-inpt-group.full {
+  .cu-custom .cu-inpt-group.full {
     grid-column: span 2;
   }
 }

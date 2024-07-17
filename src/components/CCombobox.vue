@@ -138,6 +138,6 @@ const slots = defineSlots<{
 }
 
 .cu-combo__before+.cu-inpt {
-    padding-left: 45px;
+    padding-left: 45px !important;
 }
 </style>
