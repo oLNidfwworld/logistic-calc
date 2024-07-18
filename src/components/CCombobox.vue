@@ -24,24 +24,19 @@ const slots = defineSlots<{
     before?: () => any
 }>();
 
+const isOpen = ref(false);
+
 </script>
 <template>
-    <ComboboxRoot v-model="model" class="cu-combo">
+    <ComboboxRoot v-model="model" v-model:open="isOpen" class="cu-combo">
         <ComboboxAnchor class="cu-combo__anchor">
             <div class="cu-combo__before" v-if="slots.before">
                 <slot name="before" />
             </div>
-            <ComboboxInput v-bind="{
+            <ComboboxInput @focus="isOpen = true" v-bind="{
                 id: attrs.id,
                 placeholder: attrs.placeholder
             }" class="cu-inpt" />
-            <ComboboxTrigger v-if="displayTrigger" class="cu-combo__trigger">
-                <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M15.2071 3.70711L8.84313 10.0711C8.45261 10.4616 7.81944 10.4616 7.42892 10.0711L1.06496 3.70711C0.674431 3.31658 0.674431 2.68342 1.06496 2.29289C1.45548 1.90237 2.08865 1.90237 2.47917 2.29289L8.13602 7.94975L13.7929 2.29289C14.1834 1.90237 14.8166 1.90237 15.2071 2.29289C15.5976 2.68342 15.5976 3.31658 15.2071 3.70711Z"
-                        fill="#738692" />
-                </svg>
-            </ComboboxTrigger>
         </ComboboxAnchor>
         <ComboboxContent class="cu-combo__content">
             <ComboboxViewport class="cu-combo__viewport">

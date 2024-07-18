@@ -20,7 +20,7 @@ const attrs = shallowReactive(useAttrs());
 
 </script>
 <template>
-    <NumberFieldRoot v-model="model" class="cu-inpt-number" :min="0">
+    <NumberFieldRoot :default-value="undefined" v-model="model" class="cu-inpt-number" :min="0">
         <NumberFieldInput v-bind="{
             id: attrs.id,
             placeholder: attrs.placeholder

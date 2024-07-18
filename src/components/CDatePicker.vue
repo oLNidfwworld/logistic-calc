@@ -19,10 +19,11 @@ import {
     DatePickerPrev,
     DatePickerRoot,
     DatePickerTrigger,
-    Label,
-} from 'radix-vue'
+} from 'radix-vue';
+import type { DateValue } from '@internationalized/date';
 import { ref } from 'vue';
-
+import { CalendarDate } from '@internationalized/date';
+import { shallowReactive, useAttrs } from 'vue'
 const placeholder = ref({
     day: 'дд',
     month: 'мм',
@@ -64,11 +65,14 @@ const emits = defineEmits(['update:modelValue']);
 
 const model = useVModel(props, 'modelValue', emits);
 
+const dateNow = new CalendarDate((new Date()).getFullYear(), (new Date()).getMonth() + 1, (new Date()).getDate()) as DateValue;
+
+const attrs = shallowReactive(useAttrs());
 
 </script>
 <template>
     <div class="cu-date-field">
-        <DatePickerRoot v-model="model" id="date-field" granularity="day">
+        <DatePickerRoot :min-value="dateNow" v-model="model" id="date-field" granularity="day">
             <DatePickerField v-slot="{ segments }" class="cu-date-field__inpt">
                 <div class="cu-date-field__data">
                     <template v-for="item in formattedSegments(segments)" :key="item.part">

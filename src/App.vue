@@ -63,12 +63,12 @@ const submit = () => {
           <CCombobox placeholder="40 футов" id="container-type" v-model="data.containerType" :items="comboItems" />
         </div>
         <div class="cu-inpt-group">
-          <label for="container-type" class="cu-inpt-group__label">Километраж от МКАД до склада</label>
-          <CInputNumber placeholder="Расстояние" id="container-type" v-model="data.distance" />
+          <label for="distance" class="cu-inpt-group__label">Километраж от МКАД до склада</label>
+          <CInputNumber placeholder="Расстояние" id="distance" v-model="data.distance" />
         </div>
         <div class="cu-inpt-group">
-          <label for="container-type" class="cu-inpt-group__label">Терминал постановки</label>
-          <CCombobox placeholder="Пункт отправки" id="container-type" v-model="data.moveFrom" :items="terminals"
+          <label for="moveFrom" class="cu-inpt-group__label">Терминал постановки</label>
+          <CCombobox placeholder="Пункт отправки" id="moveFrom" v-model="data.moveFrom" :items="terminals"
             :display-trigger="false">
             <template #before>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,8 +90,8 @@ const submit = () => {
           </CCombobox>
         </div>
         <div class="cu-inpt-group">
-          <label for="container-type" class="cu-inpt-group__label">Терминал сдачи</label>
-          <CCombobox placeholder="Пункт назначения" id="container-type" v-model="data.moveTo" :items="terminals"
+          <label for="moveTo" class="cu-inpt-group__label">Терминал сдачи</label>
+          <CCombobox placeholder="Пункт назначения" id="moveTo" v-model="data.moveTo" :items="terminals"
             :display-trigger="false">
 
             <template #before>
@@ -114,8 +114,8 @@ const submit = () => {
           </CCombobox>
         </div>
         <div class="cu-inpt-group full">
-          <label for="container-type" class="cu-inpt-group__label">Дата подачи машины</label>
-          <CDatePicker v-model="data.date" />
+          <label for="date" class="cu-inpt-group__label">Дата подачи машины</label>
+          <CDatePicker v-model="data.date" id="date" />
         </div>
       </div>
       <div class="cu-form__approve">
